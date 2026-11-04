@@ -1,0 +1,13 @@
+# Локальные пути к Android SDK / NDK.
+# Файл НЕ коммитится в git (см. .gitignore) — на каждой машине он свой.
+# Gradle также подхватит значения из переменных окружения ANDROID_HOME / ANDROID_SDK_ROOT,
+# если этот файл отсутствует.
+
+sdk.dir=C\:\\Users\\<USERNAME>\\AppData\\Local\\Android\\Sdk
+# Для macOS/Linux:
+# sdk.dir=/home/<user>/Android/Sdk
+# sdk.dir=/Users/<user>/Library/Android/sdk
+
+# Путь к NDK обязателен: через него собирается JNI-мост (pyembed.cpp)
+# и линкуются бинарники CPython из app/src/main/jniLibs.
+ndk.dir=${sdk.dir}\\ndk\\25.2.9519653
