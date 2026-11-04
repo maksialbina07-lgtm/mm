@@ -28,7 +28,35 @@ Telegram Bot API                        aiohttp long-polling из user-кода
 optimization (Doze) у отдельных OEM может замедлять сеть в фоне. Пользователю
 нужно добавить приложение в исключения оптимизации батареи.
 
-## Сборка
+## Структура проекта (полная, готова к сборке)
+
+```
+android-ide/
+├── settings.gradle.kts          # root "PyDroidIDE", модуль :app
+├── build.gradle.kts             # AGP 8.2.2 + Kotlin 1.9.22 (apply false)
+├── gradle.properties            # JVM-память, AndroidX, параллельная сборка
+├── gradlew / gradlew.bat        # Gradle wrapper (Unix/Windows), запуск сборки
+├── gradle/wrapper/              # gradle-wrapper.jar + .properties (Gradle 8.5)
+├── local.properties.example     # шаблон: скопируйте в local.properties и укажите sdk.dir
+├── .gitignore                   # build/, .gradle/, local.properties, .cxx/
+├── app/                         # модуль приложения (Kotlin + JNI + assets)
+└── tools/prepare_python_env.sh  # подготовка бинарников и site-packages
+```
+
+## Сборка APK
+
+Корень проекта — папка `android-ide/` (открывать в Android Studio именно её).
+
+```bash
+cd android-ide
+cp local.properties.example local.properties   # и вписать реальный путь к SDK
+./gradlew assembleDebug                        # Windows: gradlew.bat assembleDebug
+# результат: app/build/outputs/apk/debug/app-debug.apk
+./gradlew installDebug                         # установка на подключённое устройство
+```
+
+Wrapper сам скачает Gradle 8.5 — ставить Gradle вручную не нужно. Требуются:
+JDK 17, Android SDK (platform 34) и NDK 25.2.9519653 (ставятся через SDK Manager).
 
 ### Шаг 1. Бинарники CPython → jniLibs
 

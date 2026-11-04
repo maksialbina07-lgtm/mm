@@ -1,0 +1,22 @@
+# Gradle / Android build артефакты
+.gradle/
+build/
+*/build/
+app/build/
+
+# Локальные пути к SDK — машинно-зависимые, не коммитятся
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Профилировщик / перехватчики
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Промежуточные Python-артефакты (готовятся tools/prepare_python_env.sh)
+__pycache__/
+*.pyc

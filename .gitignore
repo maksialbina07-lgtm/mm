@@ -1,1 +1,13 @@
+# артефакты экспорта
 *.bundle
+
+# Gradle / Android build артефакты
+.gradle/
+build/
+*/build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
